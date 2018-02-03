@@ -1,0 +1,74 @@
+Trabalho atual:
+
+-> Focar na Interoperabilidade de conteúdo, essa era a dúvida anterior
+-> Mostrar uma arquitetura na qual o conteúdo de sites pode ser mesclado
+-> Apresentar um modelo capaz de fazer isso
+-> Incluir figuras na especificação de conceitos
+-> Colocar exemplo de tabela para representar as propriedades do RDF, seguir ideia do André Casado
+-> Introduzir ideia do FOAF
+-> Separar caso de uso em escolha da ontologia
+-> resultados obtidos
+-> XPath ou XQuery ?
+-> Incluir fotos do código-fonte dos portais
+-> Incluir fotos do código fonte do sistema
+-> Citar problema da co-referencia(dados identicos repetidos - problemas de lojas em shoppings)
+-> Citar OWL ?
+
+Titulo: Populando ontologias através de informações em HTML - o caso do currículo lattes
+Autor: André Casado Castaño
+Ano: 2008
+Orientador: Renata Wassermann
+xx páginas
+
+-> Utilizou uma ontologia definida previamente em outro trabalho de mestrado
+-> Tem muiras páginas, mas a maioria basicamente é feita por imagens e grandes listagens de código.
+-> Tem MUITO código jogado... deveriam ser todos apendices!!!
+-> Fala sobre o problema da duplicidade e como ele tratou
+-> usou DIFMAX para tratar similaridades
+-> Usou medida de precisão na recuperação da informação
+
+Titulo: Extração e Consulta de Informações o Currículo Lattes baseado em Ontologias
+Autor: Eduardo Ferreira Galego
+Ano: 2013
+Orientador: Renata Wassermann
+37 páginas 
+
+-> Objetivo é criar uma ferramenta?
+-> Fez uma nova ferramenta baseado em trabalhos já realizados mas que guarda a informação em OWL
+-> Basicamente mostrou que o sistema armazena e permite a consulta SPARQL
+
+Titulo: Interoperabilidade de documentos digitais usando ontologias
+Autor: Erika Guetti Suca
+Ano: 2012
+Orientador: Flávio Soares Côrrea da Silva
+69 páginas
+
+
+-> Foco: Documentos equivalentes ou bastante distintos
+-> Objetivo: Possibilitar interoperabilidade entre diferentes formatos + reutilização de formatos
+-> Proposta: Usar ontologia (definida por quem?)
+-> Avaliação de resultados: portabilidade de documentos ODF e OOXML
+-> A maioria das páginas adicionais são tabelas.
+
+-> Ela definiu a ontologia e não justificou se está correta (possivelmente pq não é o foco!!!!!)
+-> Não teve nenhuma apresentação do sistema. É sério isso ?
+
+
+Titulo: Predição de tags usando linked data: um estudo de caso no banco de dados de Arquigrafia
+Autor: Ricardo Augusto Teixeira de Souza
+Orientador: Leliane Nunes de Barros
+Ano: 2013
+
+
+
+
+
+Titulo: OntoBacen: Uma Ontologia para Gestão de Riscos do Sistema Financeiro Brasileiro
+Autor: Filipe Ricardo Polizel
+Orientador: Jaime Simão Sichman
+Ano: 2016
+
+-> Criou uma ontologia BASEADA em conceitos do OntoBACEN. NÂO HÁ qualquer tipo de validação
+-> Usou o sistema para responder perguntas que ele mesmo criou baseado em problemas do dominio dele. (Isso é, não quer dizer que o Bacen realmente precise do que ele respondeu)
+-> Não falou sobre trabalhos relacionados
+-> Ele criou a ontologia, mas como garantiu que está correta?

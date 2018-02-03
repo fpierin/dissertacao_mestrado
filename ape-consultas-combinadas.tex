@@ -1,0 +1,155 @@
+\chapter{Consulta com várias restrições}
+\label{ape:consultas-varias-restricoes}
+\begin{lstlisting}[language=SPARQL,basicstyle=\ttfamily\small]
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX iweb:<http://integraweb.ddns.net/>
+PREFIX schema:<http://schema.org/>
+SELECT ?title ?latitude ?longitude ?startDate ?endDate ?startTime ?endTime ?cuisine ?description ?priceRange ?telephone ?overview ?streetAddress ?price ?type ?url ?image ?servesCuisine WHERE {
+	{
+		?s schema:title ?titleObj ;
+		schema:latitude ?latitudeObj ;
+		schema:longitude ?longitudeObj ;
+		iweb:near ?nearObj ; 
+		rdf:type schema:Restaurant ;
+		schema:servesCuisine ?servesCuisineObj ;
+		rdf:type ?typeObj .
+		?nearObj schema:title ?nearObjTitle .
+		OPTIONAL { ?s schema:cuisine ?cuisineObj }
+		OPTIONAL { ?s schema:description ?descriptionObj }
+		OPTIONAL { ?s schema:endDate ?endDateObj }
+		OPTIONAL { ?s schema:endTime ?endTimeObj }	
+		OPTIONAL { ?s schema:overview ?overviewObj }
+		OPTIONAL { ?s schema:price ?priceObj }	
+		OPTIONAL { ?s schema:priceRange ?priceRangeObj }
+		OPTIONAL { ?s schema:startDate ?startDateObj }
+		OPTIONAL { ?s schema:startTime ?startTimeObj }
+		OPTIONAL { ?s schema:streetAddress ?streetAddressObj }	
+		OPTIONAL { ?s schema:telephone ?telephoneObj }
+		OPTIONAL { ?s schema:serviceURL ?urlObj }
+		OPTIONAL { ?s schema:image ?imageObj }
+		values ?subClassObj { schema:Event schema:FoodEstablishment schema:CivicStructure } 
+		BIND (str(?titleObj) as ?title)
+		BIND (str(?latitudeObj) as ?latitude)
+		BIND (str(?longitudeObj) as ?longitude)
+		BIND (str(?servesCuisineObj) as ?servesCuisine)
+		BIND (str(?descriptionObj) as ?description)
+		BIND (str(?endDateObj) as ?endDate)
+		BIND (str(?overviewObj) as ?overview)
+		BIND (str(?priceObj) as ?price)
+		BIND (str(?priceRangeObj) as ?priceRange)
+		BIND (str(?startDateObj) as ?startDate)
+		BIND (str(?streetAddressObj) as ?streetAddress)
+		BIND (str(?telephoneObj) as ?telephone)
+		BIND (str(?urlObj) as ?url)
+		BIND (str(?imageObj) as ?image)
+		BIND ( strafter(strafter( str(?typeObj), "http://" ),"/") as ?type )
+		BIND ( strafter( str(?endTimeObj), "T" ) as ?endTime )
+		BIND ( strafter( str(?startTimeObj), "T" ) as ?startTime )
+		FILTER (str(?nearObjTitle) = 'Fiaminghi - Pensamentos Compostos')
+		FILTER (?servesCuisine = 'Natural')
+		FILTER (?type = 'Restaurant')
+		FILTER NOT EXISTS {
+			?s rdf:type ?subtype .
+			?subtype rdfs:subClassOf* ?typeObj .
+			filter ( ?subtype != ?typeObj )
+		}
+	}
+	UNION 
+	{
+		?s schema:title ?titleObj ;
+		schema:latitude ?latitudeObj ;
+		schema:longitude ?longitudeObj ;
+		rdf:type schema:ExhibitionEvent ;
+		rdf:type ?typeObj .
+		OPTIONAL { ?s schema:servesCuisine ?servesCuisineObj }
+		OPTIONAL { ?s schema:description ?descriptionObj }
+		OPTIONAL { ?s schema:endDate ?endDateObj }
+		OPTIONAL { ?s schema:endTime ?endTimeObj }	
+		OPTIONAL { ?s schema:overview ?overviewObj }
+		OPTIONAL { ?s schema:price ?priceObj }	
+		OPTIONAL { ?s schema:priceRange ?priceRangeObj }
+		OPTIONAL { ?s schema:startDate ?startDateObj }
+		OPTIONAL { ?s schema:startTime ?startTimeObj }
+		OPTIONAL { ?s schema:streetAddress ?streetAddressObj }	
+		OPTIONAL { ?s schema:telephone ?telephoneObj }
+		OPTIONAL { ?s schema:serviceURL ?urlObj }
+		OPTIONAL { ?s schema:image ?imageObj }
+		values ?subClassObj { schema:Event schema:FoodEstablishment schema:CivicStructure } 
+		BIND (str(?titleObj) as ?title)
+		BIND (str(?latitudeObj) as ?latitude)
+		BIND (str(?longitudeObj) as ?longitude)
+		BIND (str(?servesCuisineObj) as ?servesCuisine)
+		BIND (str(?cuisineObj) as ?cuisine)
+		BIND (str(?descriptionObj) as ?description)
+		BIND (str(?endDateObj) as ?endDate)
+		BIND (str(?overviewObj) as ?overview)
+		BIND (str(?priceObj) as ?price)
+		BIND (str(?priceRangeObj) as ?priceRange)
+		BIND (str(?startDateObj) as ?startDate)
+		BIND (str(?streetAddressObj) as ?streetAddress)
+		BIND (str(?telephoneObj) as ?telephone)
+		BIND (str(?urlObj) as ?url)
+		BIND (str(?imageObj) as ?image)
+		BIND ( strafter(strafter( str(?typeObj), "http://" ),"/") as ?type )
+		BIND ( strafter( str(?endTimeObj), "T" ) as ?endTime )
+		BIND ( strafter( str(?startTimeObj), "T" ) as ?startTime )
+		FILTER (?title = 'Fiaminghi - Pensamentos Compostos')
+		FILTER (?type = 'ExhibitionEvent')
+		FILTER NOT EXISTS {
+			?s rdf:type ?subtype .
+			?subtype rdfs:subClassOf* ?typeObj .
+			filter ( ?subtype != ?typeObj )
+		}
+	}
+	UNION 
+	{
+		?s schema:title ?titleObj ;
+		schema:latitude ?latitudeObj ;
+		schema:longitude ?longitudeObj ;
+		iweb:near ?nearObj ; 
+		rdf:type schema:BarOrPub ;
+		rdf:type ?typeObj .
+		?nearObj schema:title ?nearObjTitle .
+		OPTIONAL { ?s schema:servesCuisine ?servesCuisineObj }
+		OPTIONAL { ?s schema:description ?descriptionObj }
+		OPTIONAL { ?s schema:endDate ?endDateObj }
+		OPTIONAL { ?s schema:endTime ?endTimeObj }	
+		OPTIONAL { ?s schema:overview ?overviewObj }
+		OPTIONAL { ?s schema:price ?priceObj }	
+		OPTIONAL { ?s schema:priceRange ?priceRangeObj }
+		OPTIONAL { ?s schema:startDate ?startDateObj }
+		OPTIONAL { ?s schema:startTime ?startTimeObj }
+		OPTIONAL { ?s schema:streetAddress ?streetAddressObj }	
+		OPTIONAL { ?s schema:telephone ?telephoneObj }
+		OPTIONAL { ?s schema:serviceURL ?urlObj }
+		OPTIONAL { ?s schema:image ?imageObj }
+		values ?subClassObj { schema:Event schema:FoodEstablishment schema:CivicStructure } 
+		BIND (str(?titleObj) as ?title)
+		BIND (str(?latitudeObj) as ?latitude)
+		BIND (str(?longitudeObj) as ?longitude)
+		BIND (str(?servesCuisineObj) as ?servesCuisine)
+		BIND (str(?cuisineObj) as ?cuisine)
+		BIND (str(?descriptionObj) as ?description)
+		BIND (str(?endDateObj) as ?endDate)
+		BIND (str(?overviewObj) as ?overview)
+		BIND (str(?priceObj) as ?price)
+		BIND (str(?priceRangeObj) as ?priceRange)
+		BIND (str(?startDateObj) as ?startDate)
+		BIND (str(?streetAddressObj) as ?streetAddress)
+		BIND (str(?telephoneObj) as ?telephone)
+		BIND (str(?urlObj) as ?url)
+		BIND (str(?imageObj) as ?image)
+		BIND ( strafter(strafter( str(?typeObj), "http://" ),"/") as ?type )
+		BIND ( strafter( str(?endTimeObj), "T" ) as ?endTime )
+		BIND ( strafter( str(?startTimeObj), "T" ) as ?startTime )
+		FILTER (str(?nearObjTitle) = 'Fiaminghi - Pensamentos Compostos')
+		FILTER (?type = 'BarOrPub')
+		FILTER NOT EXISTS {
+			?s rdf:type ?subtype .
+			?subtype rdfs:subClassOf* ?typeObj .
+			filter ( ?subtype != ?typeObj )
+		}
+	}
+}
+\end{lstlisting}

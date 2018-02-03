@@ -1,0 +1,160 @@
+%% ------------------------------------------------------------------------- %%
+\chapter{Introdução}
+\label{cap:introducao}
+
+Nesse capítulo são apresentados a motivação deste trabalho, o panorama tecnológico associado, a metodologia utilizada em seu desenvolvimento e a organização do documento.
+
+\section{Motivação}
+\label{sec:motivacao}
+
+O progresso das pesquisas científicas, somado ao constante avanço do poder computacional, tem impulsionado a humanidade a uma nova era digital na qual a capacidade de armazenar, correlacionar e produzir informação se torna fundamental para garantir vantagem competitiva para as organizações públicas e privadas. Uma grande quantidade de dados é diariamente recolhida e publicada na Internet por meio de incontáveis entidades distribuídas ao longo do planeta formando a Web atual, também conhecida por Web 2.0. Não por outro motivo, nos últimos dez anos tornaram-se cada vez mais populares os portais online para ensino a distância (e-learning), comércio eletrônico (e-commerce) e a transparência de dados públicos (e-government) \citep{Mustapasa2010, Klischewski2006} que se valem da rede da Internet para disponibilizar dados em documentos nos mais diferentes formatos como, por exemplo, HTML, CSV ou XML.
+
+A maioria dos dados que formam a Internet como a conhecemos é composta por documentos (semi-) estruturados cujo conteúdo é gerado dinamicamente através de consultas em banco de dados. De maneira geral, uma parcela representativa desses dados não possui uma estrutura bem definida de maneira que só pode ser compreendida por humanos; entretanto, dada a grande quantidade desses dados, esses só podem ser processados por computadores \citep{Stumme2006}. Além disso, as informações não são centralizadas e ficam compreendidas em diferentes silos de informação, tais como  Wikipédia,  Facebook,  Flicker,  Google Maps, entre outros. Essas aplicações geram e reutilizam a informação de maneira colaborativa por meio de mecanismos que permitem a atualização de dados em tempo real usando tecnologias como o AJAX. Em contrapartida, toda essa informação acaba sendo confinada nessas fontes de conteúdo, dificultando uma maior integração de diferentes de conteúdos e gerando situações como duplicação da informação, informação incompleta ou excessivamente distribuída. 
+
+Um exemplo de duplicação é o perfil de um individuo, que pode ser encontrado em redes sociais como o Facebook, o Twitter e até mesmo o Linkedin. Nesse caso, organizações distintas armazenam um mesmo conteúdo, o que implica diretamente não somente em maior custo para as empresas que não compartilham e centralizam essa informação mas, também, para o usuário que acaba sendo levado a preencher o próprio perfil repetidas vezes em todos os portais que demandem seu cadastro. 
+Assim, as informações publicadas na Internet carecem de mecanismos que as inter-relacionem automaticamente. Em decorrência deste fato, muita informação na Internet é incompleta; tal situação poderia ser mitigada pela união dos dados armazenados em diferentes fontes. A título de exemplo, considere-se os portais de divulgação de eventos no Brasil: é comum encontrar cenários em que um determinado portal possui a informação da existência e local de uma palestra mas não informa o horário; um segundo portal indica o local da execução da mesma palestra, o horário e o palestrante. Deste modo, não é possível identificar as palestras de um determinado individuo senão pela busca em ambos os sites e composição da informação. Embora trabalhosa, tal pesquisa ainda é possível se limitada a uma palestra especifica de um individuo em especial; no entanto, ao estender a todas as palestras, contidas em diferentes sites da Internet, a mesma pesquisa passa a ser inviável, uma vez que são muitos os portais e informações que precisam ser avaliados. Ao combinar as informações de todos os portais acerca desse mesmo domínio, torna-se possível entender e pesquisar melhor as informações sobre o assunto e automatizar processos como, por exemplo, montar a grade de apresentações de um determinado palestrante sem o ônus de pesquisar em diferentes portais.
+
+A rapidez na obtenção de informação faz com que as pessoas não percam tempo. Como nos dias de hoje a informação está espalhada na Internet, para tomar uma decisão mais assertiva muitas vezes o usuário é obrigado a juntá-las, interpretá-las e correlacioná-las de maneira a obter uma visão mais ampla sobre um determinado domínio de interesse. Atualmente um sujeito que gosta de eventos culturais e tenha o interesse em decidir entre ir a uma palestra dentro de uma faculdade ou a um evento artístico que acontece em um parque precisa navegar por diferentes portais para entender a localização, o horário e poder escolher entre uma, outra, ou ambas. Nesse caso, ao menos um portal de uma faculdade e um portal de eventos artísticos acaba sendo visitado na Internet uma vez que na realidade do Brasil e na de outros países do mundo, o portal que concentra dados sobre cerimônias dentro de uma organização é muitas vezes mantido na própria organização. Nesse sentido, uma nova abordagem para captura e pesquisa da informação distribuída na Internet é necessária.
+
+Considere a escolha de um passeio cultural para um final de semana. Existem vários portais na Internet que divulgam dados sobre restaurantes, palestras, peças, etc., em uma dada região para um determinado dia e horário. O Catraca Livre\footnote{\url{https://catracalivre.com.br/sp/agenda/\#data=13/12/2016}.}, por exemplo, possui uma grande quantidade de informações deste tipo sobre São Paulo, Rio de Janeiro e outras seis capitais do Brasil, mas não contempla os eventos que acontecem em cidades ou países fora desse escopo. Já o site Visite São Paulo\footnote{\url{http://www.visitesaopaulo.com/}.}. contém outras informações sobre a capital e completa as informações do Catraca Livre. A própria USP possui sua própria agenda de eventos, o USP Eventos\footnote{\url{http://www.eventos.usp.br/}.}. No entanto, embora existam portais que agregam informações sobre eventos, não há uma visão ampla e centralizada sobre tudo o que ocorre numa área próxima ao usuário, o que o obriga a escolher um entre todos os portais ou então a visitar cada um deles para entender e escolher a opção mais adequada a ele naquele momento. Ao centralizar essa informação sob um mesmo domínio da informação, torna-se possível realizar buscas mais relevantes sobre um determinado tema.
+
+A integração entre fontes com domínios distintos é outro ponto relevante de atenção. Levando em consideração o exemplo dos eventos distribuídos por diferentes portais na Internet, podemos tornar essa consulta ainda mais rica unindo a essa base de conhecimento os dados sobre outros domínios como, por exemplo, a informação sobre transporte público. Em grandes metrópoles como São Paulo é cada vez mais frequente a adoção de transportes públicos como ônibus, metrô ou táxi para se deslocar pela cidade. No entanto, para pessoas que dependem exclusivamente desses meios de transporte, muitas vezes a escolha de um passeio, restaurante ou estabelecimento em geral pode depender da proximidade, por exemplo, de uma estação de metrô. Indo além, podemos querer saber os restaurantes abertos localizados perto de uma determinada palestra que desejamos assistir. Atualmente os portais de divulgação de bares e restaurantes não dispõe de inteligência para definir o significado de "perto" ou "longe" e por isso não são capazes de trazer esses dados com precisão. Desse modo, ao combinar informações como estações de metrô com os diferentes eventos na cidade e adicionar significado a essa informação de maneira a permitir estabelecer questões como proximidade entre diferentes pontos pode tornar a pesquisa de um individuo ainda mais rica e relevante.
+
+\section{Panorama Tecnológico}
+\label{sec:tecnologias}
+
+Em geral, a representação dos dados na Internet é feita através de páginas geradas dinamicamente através de consultas pré-definidas em bases de dados e usualmente representadas por uma linguagem de marcação como o HTML. São documentos raramente acessíveis fora da API proprietária \citep{Mika2015}, o que contribui para dificultar a busca de dados de maneira mais integrada. Desse modo, a interoperabilidade da informação proveniente de fontes distintas na Internet acaba limitada à camada de apresentação na qual a informação é representada em documentos pouco estruturados e sem uma semântica comum, o que potencializa a complexidade de unificação desses repositórios de conteúdo. Essa característica é facilmente observável ao buscar informações sobre eventos em portais brasileiros, uma vez que essa informação está espalhada na Internet, i.e, informações sobre eventos acadêmicos estão geralmente restritas aos próprios portais de universidades que os estão sediando, informações sobre shows estão espalhadas por diferentes portais privados, informações sobre restaurantes estão contidas em outros silos de informação distintos assim como acontece quando buscamos por bares e assim por diante.
+
+A busca da informação na Internet pode ser melhorada a partir da integração e correlaciona-mento das informações publicadas na Internet. Nesse sentido, a Web Semântica busca transcender as barreiras atuais da integração e se vale de iniciativas como o Schema.org\footnote{\url{http://schema.org}}, projeto mantido pelas grandes empresas de indexação e busca de dados na Internet como Google, Microsoft, Yandex e Pinterest que passaram a definir terminologias de referência para atribuir significado à informação. Assim o conteúdo produzido na Internet pode agora ser marcado de maneira a permitir que o computador passe a compreender conceitos mais abstratos como Teatro, Cinema, Restaurante, entre outros. Apesar disso, uma terminologia equivalente não é suficiente para alcançar a integração dos dados, uma vez que é necessária a existência de mecanismos capazes de recuperar as informações contidas nos diferentes portais de dados para então convertê-las para uma terminologia homogênea pré-definida. Nesse contexto, a recuperação de dados juntamente com a respectiva conversão para uma terminologia homogênea é uma solução capaz de incentivar a interconexão da informação. 
+
+Os diferentes formatos de representação da informação na Internet são outra barreira para a unificação da informação na Web. Isso porque diferentes linguagens de marcação como o HTML, o XML ou o CSV podem ser utilizadas para publicar uma informação. Tal dificuldade pode ser superada por meio da exploração semântica com o uso de ontologias \citep{Gali2004} que acabam promovendo um entendimento único e compartilhado dos dados que existem dentro de um determinado domínio de integração. Não por outro motivo, um dos objetivos mais comuns para o desenvolvimento de ontologias é o de compartilhar o entendimento comum da estrutura da informação \citep{Noy2001}. Assim, a Web semântica aproxima a possibilidade de realização de repositórios com dados organizados que podem ser utilizados para a pesquisa de informação inteligente para humanos e agentes computacionais \citep{Gali2004} na Internet.
+
+As ontologias são um passo importante para a integração da informação. Elas consistem de diversos conceitos a respeito de um domínio que são expressos em uma linguagem que possui semântica bem definida, de fácil compreensão e leitura \citep{Gali2004}. Também são conhecidas como a especificação explícita de uma conceitualização \citep{Gruber1993}, possuindo uma expressividade semântica que reside na inferência sobre o seu próprio conteúdo e permitindo a construção com menor esforço de representação redundante. Já o conteúdo de ontologias publicadas na Internet pode ser obtido a partir de técnicas recuperação de dados como a mineração de dados para a Web. No entanto, ao extrair a informação de diversos portais há muita repetição que precisa ser tratada. 
+
+Informações sobre uma mesma peça de teatro, uma sessão de cinema ou um evento cultural qualquer podem muitas vezes serem encontradas dentro de diferentes portais na Internet. Desse modo, a recuperação desses dados que estão espalhados na rede deve levar em consideração essa condição. Um sistema capaz de centralizar esses dados dentro da ótica de ontologias deve ser capaz de identificar e tratar esses casos podendo até mesmo ir além permitindo inclusive a mesclagem dos conteúdos encontrados propiciando informações mais completas.
+
+Além das ontologias, que definem conceitos equivalentes para a integração da informação sobre um domínio, se faz necessário ainda identificar e extrair os dados relevantes sobre os diferentes portais que publicam a informação para só então anota-los semanticamente. Por sua vez, tal objetivo pode ser alcançado a partir do uso de técnicas de mineração de dados. Em particular, a mineração de dados voltada para a Web semântica (Semantic Web Mining) combina o desafio de fazer com que dados sejam compreensíveis para máquinas com o de extrair conhecimento útil escondido nesses documentos de forma automática por meio de técnicas de mineração em dados \citep{Stumme2006}. É uma técnica que pretende extrair do conteúdo e da estrutura de recursos na Web a informação relevante de modo (semi-)automático \citep{Stumme2006} por meio do processo não-trivial de identificar padrões úteis, válidos e previamente desconhecidos \citep{Fayyad1996}. Esse modo de recuperação de informação é válido tanto em cenários bem estruturados como tabelas em banco de dados, em textos semi-estruturados, ou até naqueles textos sem estrutura alguma, de maneira que podem ser aplicados para ajudar a criar a Web Semântica.
+
+A Web semântica, também conhecida por Web 3.0, é uma das mais importantes fontes de informação \citep{Berners-lee2001}. É uma extensão da Web Atual e não uma Web totalmente nova \citep{Yong-gui2010} e envolve um campo de pesquisa que faz com que os dados possam ser entendidos por máquinas \citep{Stumme2006} além de prover meios para a criação de uma infra-estrutura genérica capaz de realizar a integração e incentivar o reuso de dados \citep{Bojars2008}. Essa fonte, que é similar à já conhecida Web de hipertextos, baseia-se em documentos provenientes da Internet, mas difere no que diz respeito à aplicação da semântica. Diferente da Web tradicional, no qual os links são ancoras de relacionamento em documentos HTML, na Web de dados (Web of Data) é possível adicionar semântica aos sites a fim de realizar a ligação entre eles \citep{Bojars2008}. Cada relacionamento entre entidades arbitrárias também pode ser descrito de maneira tal que uma pessoa ou máquina possa explorar a Web de dados. Desse modo, todas as informações globais poderiam ser relacionadas e recuperadas a partir do mapeamento semântico com o uso de ontologias.
+
+A Web Semântica, em conjunto com a mineração de dados aplicada à Web, tem o potencial não só de centralizar dados esparsos na Internet de modo a promover uma melhor tomada de decisão sobre um assunto compartilhado, mas também pode ser utilizada para integrar informações contidas na rede. Desse modo, tomando como exemplo a centralização dos eventos culturais de uma região contidos nos diversos portais da Internet, é possível não só ter uma visão ampla, única e centralizada sobre informações contidas nos diversos portais de dados mas também uma informação mais completa se unida com outros portais anotados semanticamente. Isso é, se pensarmos em pesquisar de maneira centralizada todos as peças de teatro ou musicais em cartaz produzidos por um mesmo diretor, podemos juntar a informação com dados de portais como o DBPedia que possui informações semânticas sobre os autores, produtores, entre outros diversos dados que podem tornar a busca mais próxima do interesse do usuário. Em outras palavras, torna-se possível também tornar a recuperação de informações mais rica e relevante.
+
+A proposição de uma arquitetura capaz de alcançar a integração do conteúdo de diferentes portais na Internet e de proporcionar consultas mais próximas do interesse do usuário a partir do uso de ontologias ,é portanto, tema muito relevante. Ao utilizar as técnicas de mineração de dados para identificar e recuperar a informação relevante dos portais da Internet para então anota-las semanticamente com o uso de ontologias, torna-se possível alcançar uma condição em que os dados podem ser centralizados, correlacionados, enriquecidos e publicados para novas consultas agora com semântica agregada. Com isso é possível responder perguntas que envolvem buscas complexas que dependem da informação que está inicialmente distribuída por entre diferentes portais como, por exemplo, quais restaurantes de comida italiana estão mais próximos a uma exposição que ocorre em São Paulo, quais eventos acontecem próximo ao metrô Butantã, qual o tipo de evento que mais ocorre em determinada região, quais estações de metrôs possuem maior quantidade de opções de entretenimento, entre outras. Esse é objetivo deste trabalho.
+
+%% ------------------------------------------------------------------------- %%
+\section{Objetivos}
+\label{sec:objetivos}
+
+\subsection{Objetivo geral}
+\label{sec:objetivo_geral}
+
+O objetivo geral desse trabalho é a proposição de uma arquitetura para a integração de informação proveniente de fontes de dados heterogêneas na Internet. Como estudo de caso, a arquitetura é utilizada para integrar informações sobre eventos como palestras, exposições e peças de teatro, bem como restaurantes, bares e meios de transporte na cidade de São Paulo.  
+
+\subsection{Objetivos específicos}
+\label{sec:objetivos_especificos}
+
+Pra obter o objetivo geral, pretende-se:
+\begin{itemize}
+    \item Reaproveitar modelos de ontologias existentes;
+    \item Relacionar dados semelhantes, resolver duplicidades e inconsistências;
+    \item Centralizar informações sobre um dado domínio a partir do uso da Web-semântica;
+    \item Tornar possível o acesso a informação capturada por meio de consultas semânticas;
+    \item Correlacionar a informação de diferentes domínios.
+\end{itemize}
+
+Como estudo de caso, a ontologia Schema.org. será utilizada e aplicada para caracterizar eventos diversos como palestras, peças de teatro, shows, exposições, restaurantes, bares e meios de transporte na cidade de São Paulo. A partir de seu uso, dados provenientes de fontes diversas da Internet serão integrados e centralizados em uma única fonte de informação capaz de permitir a realização de consultas semânticas.
+
+\section{Metodologia}
+\label{sec:metodologia}
+
+Via de regra, todo o conhecimento científico produzido é cerceado por metodologias que auxiliam a primorar a qualidade da obra apresentada. Este trabalho não é diferente de modo que segue uma sistematização bem definida para propor uma solução para o problema de pesquisa abordado. Nesse contexto, dentre os diferentes métodos de pesquisa existentes, optou-se por um processo rigoroso que, entre outras características, fosse capaz de guiar a apresentação da contribuição, a avaliação dos resultado e que permitisse a elaboração de artefatos, como sistemas ou modelos, para resolver problemas observáveis. Este trabalho se baseia na metodologia de pesquisa Design Science Research (DSR).
+
+A DSR é uma forma de pesquisa em sistemas de informação que é cada vez mais aceita como uma abordagem legitima para pesquisas nessa área \citep{Gregor2013}. Trata-se de um paradigma voltado a resolução de problemas e que busca criar inovações que definem ideias, práticas, capacidades técnicas ou produtos na qual análise, projeto, implementação, gerenciamento e uso de sistemas de informação pode ser efetivamente e eficientemente aplicados \citep{Hevner2004}. E que pode ser particionada em seis atividades principais: a identificação e a motivação do problema, definição dos objetivos da solução, o projeto e desenvolvimento da solução, a demonstração, avaliação e a comunicação \citep{Peffers2007}. 
+
+A primeira fase da aplicação da DSR é a identificação e motivação do problema define o que será estudado. É o ponto de partida para a elaboração de uma proposta solução. O problema a ser solucionado neste trabalho é a integração dos dados sobre eventos culturais e restaurantes que estão espalhados na Internet. A definição dos objetivos para a solução do problema encontrado anteriormente é outra característica da DSR. Para isso foi definido para este trabalho que uma possível solução deveria ser capaz de centralizar informações acerca do domínio de dados escolhido por meio de uma ótica com semântica agregada com o uso de ontologia e que fosse capaz de identificar e resolver duplicidades e inconsistências de dados. 
+
+A elaboração de uma proposta seguida do desenvolvimento é a fase que inclui as atividades que envolvem a criação de um artefato incluindo ai as funcionalidades desejadas e a arquitetura proposta. Neste trabalho a definição das características desejadas e a proposição da arquitetura teve início com tarefas de caráter teórico e bibliográfico na qual foram estudados os conceitos, tecnologias e trabalhos envolvidos com Web Semântica, com a mineração de dados e a integração da informação. Em seguida foi elaborado um modelo de arquitetura capaz de realizar a integração de dados a partir do uso de ontologias. 
+
+A fase de demonstração apresenta o uso do artefato para resolver o problema exposto e pode ser feito com o uso de experimentações, simulações, estudos de caso ou outra atividade apropriada \citep{Peffers2007}. Neste sentido a proposta de arquitetura é instanciada para eventos, restaurantes e para o metrô de São Paulo a partir de dados provenientes de portais amplamente conhecidos na Internet: o Guia da Folha, o Guia da Semana e o portal de eventos da USP. A informação obtida é então correlacionada e enriquecida por meio de inferências. A partir de então consultas mais elaboradas são realizadas sobre a informação extraindo respostas para peguntas como ``Quais são os eventos que ocorrem próximo ao metrô Brigadeiro'' e ``Quais são os eventos que ocorrem próximos a pizzarias'' conforme explicado na seção~\ref{sec:motivacao}.
+
+Finalmente, a última etapa do trabalho envolve os processos de análise e comunicação. A fase de análise leva em consideração a observação e medidas que verificam o quanto a proposta suporta a solução para o problema definido. Em outras palavras, o artefato é avaliado em termos de critérios como validade, na qual o artefato produz o que deveria produzir, utilidade, na qual se avalia se os resultados atingidos possuem valor, ou até em questões como qualidade ou eficácia \citep{Gregor2013}. Desse modo, os resultados demonstrados foram avaliados levando em consideração a capacidade de unificar a informação, tratar duplicidades e o enriquecimento da informação. Além disso, é discutido possíveis pontos de melhoria e sugestões de continuidade para a pesquisa aqui exposta. Já a fase de comunicação diz respeito a própria aplicação da metodologia para a estruturação do trabalho \citep{Peffers2007}.
+
+\section{Organização do Trabalho}
+\label{sec:organizacao_trabalho}
+
+Este trabalho foi estruturado de maneira a proporcionar ao leitor um melhor entendimento sobre o problema abordado, os fundamentos utilizados, a solução proposta e  os resultados obtidos. Nesse sentido, no Capítulo~\ref{cap:aspectos-basicos} abordam-se os principais conceitos sobre a próxima aposta relacionada à integração de informação para a Web atual. Nele são caracterizadas as áreas de pesquisa da Web Semântica e da mineração de dados na Web, e discutido como essas duas áreas podem convergir para auxiliar a resolver alguns dos problemas da integração da informação exposta em meio ao caos da rede de dados. O Capítulo~\ref{cap:modelo} contém a proposta de solução desse desafio para a integração da informação de fontes de dados na Web. Por sua vez, o Capítulo~\ref{cap:resultados} detalha a implementação da proposta e mostra os experimentos realizados, bem como uma avaliação dos resultados obtidos. Finalmente, o Capítulo~\ref{cap:conclusoes} abrange uma discussão acerca dos resultados gerais do trabalho e apresenta propostas para continuação da pesquisa no futuro. Completam o documento dois apêndices \ref{ape:sparql-marco-zero} e \ref{ape:consultas-varias-restricoes}, onde são apresentadas as consultas semânticas (utilizando a linguagem SPARQL) efetuadas nos experimentos apresentados no Capítulo~\ref{cap:resultados}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
